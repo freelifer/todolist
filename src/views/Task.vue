@@ -7,7 +7,7 @@
         v-model="todoInput"
         clearable
       ></el-input>
-      <el-select class="tl-select" v-model="typeOption" placeholder="请选择">
+      <el-select class="tl-select" v-model="typeOption" placeholder="请选择" v-if="!hiddenTypeOption">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -19,24 +19,13 @@
       <el-button class="tl-input-btn" type="primary" icon="el-icon-plus" @click="addTask">Add Task</el-button>
     </div>
     <div class="tl-task">
-      <div class="tl-task-row">
-        <task-card class="tl-task-co" :data="taskListFirstData" type="0" @change="changeComplete0"/>
-        <task-card
-          class="tl-task-co"
-          :data="taskListSecondData"
-          type="1"
-          @change="changeComplete1"
-        />
-      </div>
-      <div class="tl-task-row">
-        <task-card class="tl-task-co" :data="taskListThirdData" type="2" @change="changeComplete2"/>
-        <task-card
-          class="tl-task-co"
-          :data="taskListFourthData"
-          type="3"
-          @change="changeComplete3"
-        />
-      </div>
+      <task-card
+        class="tl-task-co"
+        :data="taskListFirstData"
+        type="0"
+        @change="changeComplete0"
+        @dragEndChange="dragEndChange"
+      />
     </div>
   </div>
 </template>
@@ -60,6 +49,7 @@ export default class Home extends Vue {
   private taskListSecondData: Array<any> = new Array<any>();
   private taskListThirdData: Array<any> = new Array<any>();
   private taskListFourthData: Array<any> = new Array<any>();
+  private hiddenTypeOption: boolean = true
 
   data() {
     return {
@@ -82,27 +72,6 @@ export default class Home extends Vue {
         }
       ],
       input10: "",
-      tableData2: [],
-      tableData3: [
-        {
-          msg: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          msg: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          msg: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          msg: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          msg: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          msg: "上海市普陀区金沙江路 1518 弄"
-        }
-      ],
       multipleSelection: []
     };
   }
@@ -124,17 +93,24 @@ export default class Home extends Vue {
   }
 
   changeComplete0(item: any) {
-    localstorage.modify(item)
+    localstorage.modify(item);
   }
 
   changeComplete1(item: any) {
-    localstorage.modify(item)}
+    localstorage.modify(item);
+  }
 
   changeComplete2(item: any) {
-    localstorage.modify(item)}
+    localstorage.modify(item);
+  }
 
   changeComplete3(item: any) {
-    localstorage.modify(item)}
+    localstorage.modify(item);
+  }
+
+  dragEndChange(arr: any) {
+    localstorage.savaAll(arr);
+  }
   addTask() {
     if (this.todoInput.length == 0) {
       return;
@@ -221,7 +197,8 @@ export default class Home extends Vue {
   margin: auto auto;
 }
 .tl-task-co {
-  width: 50%;
+  width: 80%;
   margin: 10px;
+  margin: auto auto;
 }
 </style>
