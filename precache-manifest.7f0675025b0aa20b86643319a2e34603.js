@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/todolist/js/chunk-vendors.38d0e493.js"
   },
   {
-    "revision": "adc689938e9100453e90",
-    "url": "/todolist/js/app.c13fca56.js"
+    "revision": "850ae2942aa81ace59ce",
+    "url": "/todolist/js/app.516f1ae0.js"
   },
   {
     "revision": "2591f3b00c4bd2513261",
     "url": "/todolist/js/about.b397fdf9.js"
   },
   {
-    "revision": "572fed1171044b8d1cce8383cee00f66",
+    "revision": "1e64d4d79512290a500aea2d50ce11e5",
     "url": "/todolist/index.html"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/todolist/css/chunk-vendors.9c8e3772.css"
   },
   {
-    "revision": "adc689938e9100453e90",
-    "url": "/todolist/css/app.daa7bcd6.css"
+    "revision": "850ae2942aa81ace59ce",
+    "url": "/todolist/css/app.c90da402.css"
   },
   {
     "revision": "2591f3b00c4bd2513261",
