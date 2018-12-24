@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload=function(){
+
+            <!--console.log("hello world")-->
+            <!--android.postMessage("haha")-->
+
+            <!--ZXKJ_Cache()-->
+            <!--ZXKJ_Cache("a")-->
+            <!--ZXKJ_Cache("a", "b")-->
+            <!--ZXKJ_Cache("a", "b", true)-->
+        }
+
+        function ZXKJ_Cache(fileId,hyperlink,autoDrop) {
+            return android.postMessage(JSON.stringify({
+              fileId: fileId,
+              hyperlink: hyperlink,
+              autoDrop: autoDrop
+            }));
+        }
+
+        function ZXKJ_CacheUpdate(info) {
+            log(info)
+
+            var result = document.getElementById('result');
+            result.innerHTML = info
+        }
+
+        function download() {
+            if(typeof(external)!=="undefined") {
+                external.ZXKJ_Cache("testFileId", "http://channel.51zxzn.com/media/df621b86-ee32-11e8-ab58-7cd30ae457b2/13d9d066-35ca-410b-a329-401445eea9ec.mp4", true)
+            } else {
+                var result = document.getElementById('result');
+            result.innerHTML = 'test'
+            }
+        }
+
+        function playVideoPath() {
+            var myVideo = document.getElementsByTagName('video')[0];   //获取视频video
+            if(typeof(external)!=="undefined") {
+                var play = external.ZXKJ_Cache("testFileId")
+                log(play)
+                myVideo.setAttribute("src", play);
+                myVideo.play()
+            } else {
+                var play = "http://channel.51zxzn.com/media/df621b86-ee32-11e8-ab58-7cd30ae457b2/13d9d066-35ca-410b-a329-401445eea9ec.mp4"
+                myVideo.setAttribute("src", play);
+                myVideo.play()
+            }
+        }
+
+
+        function log(msg) {
+            external.log(msg)
+        }
+    </script>
+</head>
+<body>
+<video muted controls loop poster="poster.jpg" ></video>
+<br><br><br>
+<span>您可以点击DOWNLOAD, 下载完成之后点击PLAY</span>
+<br>
+<b id='result' style="color:red"></b>
+<br><br><br>
+
+<button onclick="download()">DOWNLOAD</button>
+<br>
+<br>
+<button onclick="playVideoPath()">PLAY</button>
+<br>
+<br>
+
+<a href="http://echo.51zxzn.com/test.html">http://echo.51zxzn.com/test.html</a>
+</body>
+</html>
