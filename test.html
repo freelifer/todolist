@@ -76,6 +76,14 @@
             }
         }
 
+        function soldGood() {
+            if(typeof(external.log) != "undefined") {
+                external.ZXKJ_Output(10)
+            } else {
+                alert("不支持")
+            }
+        }
+
         function download() {
             if(typeof(external.log) != "undefined") {
                 external.ZXKJ_Cache("testFileId", "http://channel.51zxzn.com/media/df621b86-ee32-11e8-ab58-7cd30ae457b2/13d9d066-35ca-410b-a329-401445eea9ec.mp4", true)
@@ -116,6 +124,8 @@
 <br>
 
 <button onclick="playMusic()">播放声音</button>
+
+<button onclick="soldGood()">出纸</button>
 
 <br><br><br>
 <video muted controls loop poster="poster.jpg" ></video>
