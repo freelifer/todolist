@@ -7,6 +7,17 @@
     @dragenter="handleDragEnter($event, item)"
     @dragend="handleDragEnd($event, item)" >
   </div>
+
+    <div class="item" v-for="(item) in items2" :key="item.key" :style="{background:item.color,width:'80px',height:'80px'}">
+  </div>
+
+    <div class="item" v-for="(item) in items1" :key="item.key" :style="{background:item.color,width:'80px',height:'80px'}"
+        draggable="true"
+  @dragstart="handleDragStart($event, item)"
+    @dragover.prevent="handleDragOver($event, item)"
+    @dragenter="handleDragEnter($event, item)"
+    @dragend="handleDragEnd($event, item)" >
+  </div>
 </transition-group>
 </template>
 <script>
@@ -15,9 +26,16 @@ export default {
  data () {
   return {
    items: [
-    { key: 1, color: '#ffebcc'},
+    { key: 1, color: '#000000'},
     { key: 2, color: '#ffb86c'},
     { key: 3, color: '#f01b2d'}
+   ],
+      items1: [
+    { key: 5, color: '#000000'},
+    { key: 6, color: '#ffb86c'},
+    { key: 7, color: '#f01b2d'}
+   ],items2: [
+    { key: 10, color: '#ff0091'}
    ],
      
     dragging: null
@@ -64,6 +82,14 @@ export default {
   }
   .item {
    margin-top: 10px;
-   transition: all linear .3s
+   transition: all linear .3s;
+  }
+
+  .space {
+    background-color: #fff;
+   transition: all linear .3s;
+   margin-top: 10px;
+   width: 20px;
+   height: 20px;
   }
 </style>

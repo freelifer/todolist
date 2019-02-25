@@ -11,7 +11,9 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@types/js-md5": "^0.4.2",
     "element-ui": "^2.4.11",
+    "js-md5": "^0.7.3",
     "register-service-worker": "^1.5.2",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
